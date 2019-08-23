@@ -519,7 +519,7 @@ def ppt(df):
         df['volume'] = pd.to_numeric(df['volume'], errors='coerce')
         df['spend'] = df['rate'] * df['volume']
     
-    prs = Presentation("https://logisticsnowtech3.blob.core.windows.net/rajkumar/sample.pptx")
+    prs = Presentation("sample.pptx")
     Title_Only = 5
     try:
         summary_slide1 = prs.slides.add_slide(prs.slide_layouts[Title_Only])
