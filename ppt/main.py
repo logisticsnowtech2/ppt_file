@@ -31,7 +31,7 @@ directory = '/tmp/'
 #print(directory)
 ppt_directory = 'file://' + directory
 image_dir = ''
-pio.orca.config.executable = 'plotly-orca-1.2.1-1/orca_app/orca.exe'
+pio.orca.config.executable = os.path.dirname(__file__) + '/' + 'plotly-orca-1.2.1-1/orca_app/orca.exe'
 #mapbox_access_token = 'pk.eyJ1IjoiYW5hbHl0aWNzbG4iLCJhIjoiY2p0eWFrbzJ4MGZ6czRkcG5tc3hka3A3MiJ9.3iT-wbkITehGa-nhf5AgTw'
 #io.orca.config.mapbox_access_token = mapbox_access_token
 pio.orca.config.save()
@@ -296,7 +296,7 @@ def htmlToimg(file):
     #downloadpath = directory+image_dir+"chromedriver.exe"
     #getBlob("chromedriver.exe", downloadpath)
 #    downloadpath = "https://logisticsnowtech3.blob.core.windows.net/rajkumar/chromedriver.exe"
-    driver = webdriver.Chrome("chromedriver.exe")
+    driver = webdriver.Chrome(os.path.dirname(__file__) + '/' + "chromedriver.exe")
 #    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(ppt_directory +file)
     save_name = 'map.png'
