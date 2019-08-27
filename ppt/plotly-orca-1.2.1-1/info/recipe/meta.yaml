@@ -1,0 +1,22 @@
+# This file created by conda-build 3.17.8
+# meta.yaml template originally from:
+# C:\projects\image-exporter\recipe, last modified Mon Feb  4 15:32:30 2019
+# ------------------------------------------------
+
+package:
+    name: plotly-orca
+    version: 1.2.1
+source:
+    path: C:\projects\image-exporter
+build:
+    binary_relocation: false
+    number: '1'
+    string: '1'
+requirements:
+    build:
+        - nodejs 8.9.3 hd6b2f15_0
+        - vc 14.1 h0510ff6_4
+        - vs2015_runtime 14.15.26706 h3a45250_0
+extra:
+    copy_test_source_files: true
+    final: true
