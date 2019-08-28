@@ -478,22 +478,14 @@ def stackedBar(prs, df, col1, col2, value):
     table = pd.pivot_table(df, values=value, index=[col1, col2],
                            aggfunc=np.sum)
     table1 = pd.DataFrame(table.to_records())
-#    table1 = table1.sort_values(by=[col1, value] , ascending=True)
-    data = []
-    for i in list(pd.unique(table1[col1])):
-        label = list(table1[table1[col1]==i][col2])
-        y_data = list(table1[table1[col1]==i][value])
-        data.append(go.Bar(name=i, x=label, y=y_data,width=0.5))
-    layout = go.Layout(barmode='stack',
-                        xaxis = dict(title = '',titlefont=dict(size=15)),
-                        yaxis = dict(title = 'Volume (in Truckload)',
-                                     titlefont=dict(size=15)),width = 650,height = 350, margin=go.layout.Margin(l=50,r=1,b=100,t=1))
-    fig5 = {'data': data, 'layout': layout}
-#    plotly.io.orca.config.executable = 'C:/Rajkumar/dc_api/.env1/Scripts/plotly-orca-1.2.1-1/orca_app/orca.exe'
-#    plotly.io.orca.config.save()
-    pio.write_image(fig5, directory+image_dir+'fig5.png')
+    pivot_df = table1.pivot(index=col2, columns=col1, values=value)
+    pivot_df.plot.barh(stacked=True, figsize=(8,5))
+    plt.subplots_adjust(left=0.25, right=0.9, top=0.9, bottom=0.1)
+    plt.xlabel("Volume (in Truckload)", fontsize=15,fontweight='medium')
+    plt.ylabel("Vendor", fontsize=15,fontweight='medium')
+    plt.savefig(directory+image_dir+'fig5.png')
     vendor_image1 = directory+image_dir+'fig5.png'
-    slide1.shapes.add_picture(vendor_image1,Inches(0.5),Inches(1.9))
+    slide1.shapes.add_picture(vendor_image1,Inches(0.8),Inches(1.5))
     run_text(slide1,4,6.70,10,1,"LogisticsNow Confidential",12,137,137,137)
     return None
 
