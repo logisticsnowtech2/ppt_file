@@ -31,7 +31,7 @@ directory = '/tmp/'
 #print(directory)
 ppt_directory = 'file://' + directory
 image_dir = ''
-pio.orca.config.executable = os.getcwdb() + '/' + 'plotly-orca-1.2.1-1/orca_app/orca.exe'
+pio.orca.config.executable = os.path.dirname(__file__) + '/' + 'plotly-orca-1.2.1-1/orca_app/orca.exe'
 #mapbox_access_token = 'pk.eyJ1IjoiYW5hbHl0aWNzbG4iLCJhIjoiY2p0eWFrbzJ4MGZ6czRkcG5tc3hka3A3MiJ9.3iT-wbkITehGa-nhf5AgTw'
 #io.orca.config.mapbox_access_token = mapbox_access_token
 pio.orca.config.save()
@@ -296,7 +296,7 @@ def htmlToimg(file):
     #downloadpath = directory+image_dir+"chromedriver.exe"
     #getBlob("chromedriver.exe", downloadpath)
 #    downloadpath = "https://logisticsnowtech3.blob.core.windows.net/rajkumar/chromedriver.exe"
-    driver = webdriver.Chrome(os.getcwdb() + '/' + "chromedriver.exe")
+    driver = webdriver.Chrome(os.path.dirname(__file__) + '/' + "chromedriver.exe")
 #    driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(ppt_directory +file)
     save_name = 'map.png'
@@ -351,9 +351,9 @@ def Lane_map(prs, df, origin, dest):
                              textfont=dict(family='sans serif',size=10,color='white'),
                              name='Destination')]
     map_fig = {'data': data+point1+point2, 'layout': layout}
-#    pio.write_image(map_fig, directory+image_dir+'map.png')
+    pio.write_image(map_fig, directory+image_dir+'map.png')
     plotly.offline.plot(map_fig, filename=directory+image_dir+"map.html")
-    htmlToimg(image_dir+"map.html")
+    #htmlToimg(image_dir+"map.html")
     vendor_image1 = directory+image_dir+'map.png'
     slide.shapes.add_picture(vendor_image1,Inches(0.8),Inches(1.5))
     run_text(slide,4,6.70,10,1,"LogisticsNow Confidential",12,137,137,137)
