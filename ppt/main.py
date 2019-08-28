@@ -24,8 +24,9 @@ from PIL import Image
 from urllib.request import urlopen
 from io import BytesIO
 from webdriver_manager.chrome import ChromeDriverManager
+import sys
 #-----------------------------------------------------------------------------#
-
+sys.path.insert(0, os.path.dirname(__file__) + '/')
 #directory = os.path.dirname(__file__) + '/'
 directory = '/tmp/'
 #print(directory)
