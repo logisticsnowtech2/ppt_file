@@ -26,7 +26,7 @@ from io import BytesIO
 from webdriver_manager.chrome import ChromeDriverManager
 import sys
 #-----------------------------------------------------------------------------#
-sys.path.insert(0, '/user_code/')
+sys.path.insert(0, os.getcwd())
 #directory = os.path.dirname(__file__) + '/'
 directory = '/tmp/'
 #print(directory)
